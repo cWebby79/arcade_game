@@ -63,8 +63,20 @@ Player.prototype.render = function() {
     ctx.drawing(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function() {
-    
+// Move player around the screen
+Player.prototype.handleInput = function(move) {
+    if (move === 'up') {
+        this.y -= 50;
+    }
+    if (move === 'down') {
+        this.y += 50;
+    }
+    if (move === 'left') {
+        this.x -= 50;
+    }
+    if (move === 'right') {
+        this.x += 50;
+    }
 };
 
 //********************** INSTANTIATE OBJECTS ************************//
