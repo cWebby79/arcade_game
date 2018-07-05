@@ -1,16 +1,16 @@
 //****************************** ENEMY ******************************//
 
 // Enemies our player must avoid
-const Enemy = function(x, y, speed) {
+let Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
     this.speed = speed;
+    this.sprite = 'images/enemy-bug.png';
 };
 
 // Update the enemy's position, required method for game
@@ -23,10 +23,10 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
     
     // Reset enemy position when off screen
-    if (this.x >= 550) {
-        this.x = -50;
+    if (this.x > 550) {
+        this.x = -100;
     // Randomise enemy speed
-        this.speed = 80 + Math.floor((Math.random() * 200) + 1);
+        this.speed = 100 + Math.floor(Math.random() * 200);
     }
 };
 
@@ -42,25 +42,25 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 
 // Player
-const Player = function(x,y) {
-    this.sprite = 'images/char-horn-girl.png';
+let Player = function(x, y) {
     this.x = 200;
     this.y = 300;
+    this.sprite = 'images/char-cat-girl.png';
 };
 
 Player.prototype.update = function() {
     // Resets player position, with slight delay, if reaches water
-    if (this.y <= 0) {
+    if (this.y < 20) {
         setTimeout (function() {
             player.x = 200;
             player.y = 300;
-        } 1000);
+        }, 1000);
     }
 };
 
 // Draw Player on screen
 Player.prototype.render = function() {
-    ctx.drawing(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Move player around the screen
@@ -85,18 +85,19 @@ Player.prototype.handleInput = function(move) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-const allEnemies = [];
+let allEnemies = [];
 
 // Starting y position for enemy
-const enemyStartPos = [60, 140, 230];
+let enemyStart = [60, 145, 227];
 
 // Create new enemy at starting position
-enemyStartPos.forEach(function(startY) {
-    let enemy = new Enemy (0,startY);
+enemyStart.forEach(function(startY) {
+    let enemy = new Enemy (0,startY, 200);
     allEnemies.push(enemy);
 });
 
-const player = new Player();
+// Player starting position
+let player = new Player();
 
 
 // This listens for key presses and sends the keys to your
