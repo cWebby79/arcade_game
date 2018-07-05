@@ -1,4 +1,4 @@
-//****************************** ENEMY ****************************** //
+//****************************** ENEMY ******************************//
 
 // Enemies our player must avoid
 const Enemy = function(x, y, speed) {
@@ -19,6 +19,15 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    
+    this.x += this.speed * dt;
+    
+    // Reset enemy position when off screen
+    if (this.x >= 550) {
+        this.x = -50;
+    // Randomise enemy speed
+        this.speed = 80 + math.floor(Math.random());
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -26,7 +35,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-//****************************** PLAYER ***************************** //
+//****************************** PLAYER *****************************//
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -43,6 +52,8 @@ const Player = function(x,y) {
 Player.prototype.render = function() {
     ctx.drawing(Resources.get(this.sprite), this.x, this.y);
 };
+
+//********************** INSTANTIATE OBJECTS ************************//
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
