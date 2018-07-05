@@ -26,7 +26,7 @@ Enemy.prototype.update = function(dt) {
     if (this.x >= 550) {
         this.x = -50;
     // Randomise enemy speed
-        this.speed = 80 + math.floor(Math.random());
+        this.speed = 80 + Math.floor((Math.random() * 200) + 1);
     }
 };
 
@@ -48,9 +48,17 @@ const Player = function(x,y) {
     this.y = 300;
 };
 
+Player.prototype.update = function() {
+    
+};
+
 // Draw Player on screen
 Player.prototype.render = function() {
     ctx.drawing(Resources.get(this.sprite), this.x, this.y);
+};
+
+Player.prototype.handleInput = function () {
+    
 };
 
 //********************** INSTANTIATE OBJECTS ************************//
