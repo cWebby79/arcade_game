@@ -26,7 +26,7 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 550) {
         this.x = -100;
     // Randomise enemy speed
-        this.speed = 100 + Math.floor(Math.random() * 200);
+        this.speed = 100 + Math.floor((Math.random() * 200) +1);
     }
 };
 
@@ -43,17 +43,17 @@ Enemy.prototype.render = function() {
 
 // Player
 let Player = function(x, y) {
-    this.x = 200;
-    this.y = 300;
-    this.sprite = 'images/char-cat-girl.png';
+    this.x = x;
+    this.y = y;
+    this.sprite = 'images/char-boy.png';
 };
 
 Player.prototype.update = function() {
     // Resets player position, with slight delay, if reaches water
-    if (this.y < 20) {
+    if (this.y < 50 ) {
         setTimeout (function() {
-            player.x = 200;
-            player.y = 300;
+            this.x = 200;
+            this.y = 300;
         }, 1000);
     }
 };
@@ -66,16 +66,16 @@ Player.prototype.render = function() {
 // Move player around the screen
 Player.prototype.handleInput = function(move) {
     if (move === 'up') {
-        this.y -= 50;
+        this.y -= 85;
     }
-    if (move === 'down') {
-        this.y += 50;
+    else if (move === 'down') {
+        this.y += 85;
     }
-    if (move === 'left') {
-        this.x -= 50;
+    else if (move === 'left') {
+        this.x -= 100;
     }
-    if (move === 'right') {
-        this.x += 50;
+    else if (move === 'right') {
+        this.x += 100;
     }
 };
 
@@ -97,7 +97,7 @@ enemyStart.forEach(function(startY) {
 });
 
 // Player starting position
-let player = new Player();
+let player = new Player(200, 400);
 
 
 // This listens for key presses and sends the keys to your
