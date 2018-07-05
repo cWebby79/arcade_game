@@ -87,6 +87,17 @@ Player.prototype.handleInput = function(move) {
 
 const allEnemies = [];
 
+// Starting y position for enemy
+const enemyStartPos = [60, 140, 230];
+
+// Create new enemy at starting position
+enemyStartPos.forEach(function(startY) {
+    let enemy = new Enemy (0,startY);
+    allEnemies.push(enemy);
+});
+
+const player = new Player();
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
