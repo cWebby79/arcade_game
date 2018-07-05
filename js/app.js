@@ -49,7 +49,13 @@ const Player = function(x,y) {
 };
 
 Player.prototype.update = function() {
-    
+    // Resets player position, with slight delay, if reaches water
+    if (this.y <= 0) {
+        setTimeout (function() {
+            player.x = 200;
+            player.y = 300;
+        } 1000);
+    }
 };
 
 // Draw Player on screen
@@ -57,7 +63,7 @@ Player.prototype.render = function() {
     ctx.drawing(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function () {
+Player.prototype.handleInput = function() {
     
 };
 
