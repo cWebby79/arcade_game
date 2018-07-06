@@ -28,6 +28,11 @@ Enemy.prototype.update = function(dt) {
     // Randomise enemy speed
         this.speed = Math.floor((Math.random() * 300) + 100);
     }
+    // Reset if Player and enemy meet
+    if (player.x < this.x + 50 && player.x + 50 > this.x && player.y < this.y + 50 && player.y + 50 > this.y) {
+        player.x = 200;
+        player.y = 400;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -110,6 +115,7 @@ enemyStart.forEach(function(startY) {
 // Player starting position
 let player = new Player(200, 400);
 
+//**************************** LISTENERS ****************************//
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
