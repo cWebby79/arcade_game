@@ -1,6 +1,14 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+The goal of this Frogger-style game is to get the character from the grass area at the bottom of the canvas to the water at the top of the canvas.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+Sounds easy, but watch out for those pesky enemy bugs in the middle 3 rows of the canvas. They travel at varying speeds and if they touch your character he will be forced back to the original starting point.
+
+Use that arrow keys to move the character up, down, left and right.
+
+Once your character reaches the water he will be teleported back to the start position.
+
+To play this game, clone the repo and open the index.html file.
+
+Good luck!
