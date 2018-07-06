@@ -24,9 +24,9 @@ Enemy.prototype.update = function(dt) {
     
     // Reset enemy position when off screen
     if (this.x > 550) {
-        this.x = -100;
+        this.x = -80;
     // Randomise enemy speed
-        this.speed = 100 + Math.floor((Math.random() * 200) +1);
+        this.speed = Math.floor((Math.random() * 300) + 100);
     }
 };
 
@@ -49,12 +49,23 @@ let Player = function(x, y) {
 };
 
 Player.prototype.update = function() {
+    // Stop player going off canvas
+    if (this.x > 400) {
+        this.x = 400;
+    }
+    if (this.x < 100) {
+        this.x = 0;
+    }
+    if (this.y > 400) {
+        this.y = 400;
+    }
     // Resets player position, with slight delay, if reaches water
-    if (this.y < 50 ) {
-        setTimeout (function() {
-            this.x = 200;
-            this.y = 300;
-        }, 1000);
+    if (this.y < 0) {
+        this.y = -20;
+        setTimeout(function() {
+            player.x = 200;
+            player.y = 400;
+        }, 300);
     }
 };
 
