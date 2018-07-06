@@ -56,14 +56,11 @@ Player.prototype.update = function() {
 	if (this.y > 400) {
 		this.y = 400;
 	}
-	// Resets player position, with slight delay, if reaches top row
+	// Resets player position if reaches top row
 	if (this.y < 0) {
-		this.y = -20;
-		setTimeout(function() {
-			player.x = 200;
-			player.y = 400;
-		}, 300);
-	}
+        this.x = 200;
+        this.y = 400;
+    }
 };
 
 // Draw Player on screen
